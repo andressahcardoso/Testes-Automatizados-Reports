@@ -9,3 +9,8 @@
 <hr>
 
 <h4> Responsáveis: </h4>
+
+<p> ◻️	Andressa Hensel Cardoso </p>
+<p> ◻️	Amanda Moraes Benites </p>
+
+
