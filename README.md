@@ -14,3 +14,5 @@
 <p> ◻️	Amanda Moraes Benites </p>
 
 
+
+<p> 📚 Ensino Médio Técnico em Tecnologia da Internet - Senac </p>
