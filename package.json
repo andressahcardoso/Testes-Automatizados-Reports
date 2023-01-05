@@ -1,0 +1,15 @@
+{
+  "name": "testes-ska",
+  "version": "1.0.0",
+  "description": "Testes Cypress - Syneco Reports",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "author": "Amanda Benites",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.2.0",
+    "mochawesome": "^7.1.3"
+  }
+}

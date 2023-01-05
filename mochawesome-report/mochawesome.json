@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-01-04T13:09:50.010Z",
+    "end": "2023-01-04T13:10:02.041Z",
+    "duration": 12031,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "97d86bb2-fe6e-40ee-99f1-b058d86d7ccf",
+      "title": "",
+      "fullFile": "cypress\\e2e\\2 - Relatorios\\Relatorio.cy.js",
+      "file": "cypress\\e2e\\2 - Relatorios\\Relatorio.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8ecd93b2-5f03-4f6b-99d2-8928fead0d30",
+          "title": "Testes em relatórios",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Criando um relatorio",
+              "fullTitle": "Testes em relatórios Criando um relatorio",
+              "timedOut": null,
+              "duration": 11938,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login(Cypress.env('userName'), Cypress.env('password'));\ncy.get('img[src=\"assets/icons/ic_add_circle.svg\"]').click();\ncy.contains('span', 'Novo relatório').click();\ncy.get('input[id=\"mat-input-9\"]').type('Análise de Produção');\ncy.get('div[class=\"mat-body-strong\"]').contains('0').click();\ncy.contains('span', 'Próximo').click();\ncy.get('#mat-input-2').type('Cypress_01'); //Utilizado o Selector Playground​ do Cypress\ncy.get('#mat-input-3').type('Cypress - 01'); //Utilizado o Selector Playground​ do Cypress\ncy.get('input[data-placeholder=\"Grupo\"]').type('Cypress - Testes Automatizados');\ncy.get('span[class=\"mat-option-text\"]').contains('Cypress - Testes Automatizados').click();\ncy.contains('span', 'Próximo').click({\n  force: true\n});\ncy.contains('span', 'Próximo').click({\n  force: true\n});\ncy.contains('span', ' Finalizar e salvar ').click({\n  force: true\n});\ncy.contains('h1', 'Salvar').should('be.visible');\ncy.contains('span', 'Ok').click({\n  force: true\n});",
+              "err": {},
+              "uuid": "d48d5003-65cb-4d5f-882d-6f8dfe1f1d31",
+              "parentUUID": "8ecd93b2-5f03-4f6b-99d2-8928fead0d30",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d48d5003-65cb-4d5f-882d-6f8dfe1f1d31"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 11938,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
