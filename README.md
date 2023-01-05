@@ -13,6 +13,5 @@
 <p> ◻️	Andressa Hensel Cardoso </p>
 <p> ◻️	Amanda Moraes Benites </p>
 
-
-
+<p> 👩‍💻 SKA - Automação de Engenharias </p>
 <p> 📚 Ensino Médio Técnico em Tecnologia da Internet - Senac </p>
