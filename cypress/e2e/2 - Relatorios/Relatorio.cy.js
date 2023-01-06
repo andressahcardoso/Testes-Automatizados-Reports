@@ -3,7 +3,7 @@ describe('Testes em relatórios', () => {
     beforeEach(() => {
         cy.visit('/')
     });
-    it('Criando um relatorio', () => {
+    it.only('Criando um relatorio', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.openOptions()
         cy.contains('span', 'Novo relatório').click();
