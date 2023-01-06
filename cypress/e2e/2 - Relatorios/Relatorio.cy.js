@@ -25,7 +25,6 @@ describe('Testes em relatórios', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.geren('Cypress - 01');
         cy.get('img[class*="ic-edit-pen"]').click();
-        cy.wait(500);
         cy.contains('span', 'Próximo').click({force: true});
         cy.get('#mat-input-3').clear().type('Cypress_01_teste'); //Utilizado o Selector Playground​ do Cypress
         cy.get('#mat-input-4').clear({force: true}).type('Teste 1 - Cypress'); //Utilizado o Selector Playground​ do Cypress
