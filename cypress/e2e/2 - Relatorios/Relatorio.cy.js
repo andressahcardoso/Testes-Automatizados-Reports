@@ -5,6 +5,9 @@ describe('Testes em relatórios', () => {
     });
     it('Criando um relatorio', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
+        cy.openOptions()
+        cy.contains('span', 'Novo relatório').click();
+        cy.selectDataset('Aálise de Produção')
         cy.createRel()
         cy.confirmCreate();
     });
