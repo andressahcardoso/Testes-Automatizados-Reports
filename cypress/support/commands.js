@@ -26,6 +26,18 @@ Cypress.Commands.add('gerenGroup', (grupo) => {
     
 })
 
+Cypress.Commands.add('createRel', () => {
+    cy.get('img[src="assets/icons/ic_add_circle.svg"]').click();
+    cy.contains('span', 'Novo relatório').click();
+    cy.get('#mat-input-2').type('Cypress_01'); //Utilizado o Selector Playground​ do Cypress
+    cy.get('#mat-input-3').type('Cypress - 01'); //Utilizado o Selector Playground​ do Cypress
+    cy.get('input[data-placeholder="Grupo"]').type('Cypress - Testes Automatizados');
+    cy.get('span[class="mat-option-text"]').contains('Cypress - Testes Automatizados').click();
+    cy.contains('span', 'Próximo').click({force: true});
+    cy.contains('span', 'Próximo').click({force: true});
+    cy.contains('span', ' Finalizar e salvar ').click({force: true});
+})
+
 // Cypress.Commands.add('gerenGroupEdit', (grupo) => {
 //     cy.get('.mat-toolbar-row > :nth-child(6)').click(); //Utilizado o Selector Playground do Cypress
 //     cy.contains('span', ' Gerenciadores ').click();

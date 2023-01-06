@@ -16,3 +16,9 @@ Cypress.Commands.add('confirmCreate', () => {
     cy.contains('h1', 'Salvar').should('be.visible');
     cy.contains('span', 'Ok').click({force: true});
 })
+
+Cypress.Commands.add('selectDataset', (dataset) => {
+    cy.get('input[id="mat-input-9"]').type(dataset);
+    cy.get('div[class="mat-body-strong"]').contains('0').click();
+    cy.contains('span', 'Próximo').click();
+})

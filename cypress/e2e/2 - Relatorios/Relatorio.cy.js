@@ -5,18 +5,7 @@ describe('Testes em relatórios', () => {
     });
     it('Criando um relatorio', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
-        cy.get('img[src="assets/icons/ic_add_circle.svg"]').click();
-        cy.contains('span', 'Novo relatório').click();
-        cy.get('input[id="mat-input-9"]').type('Análise de Produção');
-        cy.get('div[class="mat-body-strong"]').contains('0').click();
-        cy.contains('span', 'Próximo').click();
-        cy.get('#mat-input-2').type('Cypress_01'); //Utilizado o Selector Playground​ do Cypress
-        cy.get('#mat-input-3').type('Cypress - 01'); //Utilizado o Selector Playground​ do Cypress
-        cy.get('input[data-placeholder="Grupo"]').type('Cypress - Testes Automatizados');
-        cy.get('span[class="mat-option-text"]').contains('Cypress - Testes Automatizados').click();
-        cy.contains('span', 'Próximo').click({force: true});
-        cy.contains('span', 'Próximo').click({force: true});
-        cy.contains('span', ' Finalizar e salvar ').click({force: true});
+        cy.createRel()
         cy.confirmCreate();
     });
 
