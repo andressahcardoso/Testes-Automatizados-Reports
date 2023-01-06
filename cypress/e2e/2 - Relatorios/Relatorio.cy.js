@@ -17,8 +17,7 @@ describe('Testes em relatórios', () => {
         cy.contains('span', 'Próximo').click({force: true});
         cy.contains('span', 'Próximo').click({force: true});
         cy.contains('span', ' Finalizar e salvar ').click({force: true});
-        cy.contains('h1', 'Salvar').should('be.visible');
-        cy.contains('span', 'Ok').click({force: true});
+        cy.confirmCreate();
     });
 
     it('Editando um relatorio', () => {
@@ -43,11 +42,7 @@ describe('Testes em relatórios', () => {
     it('Excluindo um relatorio', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.geren('Teste 1 - Cypress');
-        cy.get('img[class*="ic-delete"]').click();
-        cy.contains('h1', 'Confirmar exclusão').should('be.visible');
-        cy.contains('span', 'Sim').click();
-        cy.contains('h1', 'Excluir').should('be.visible');
-        cy.contains('span', 'Ok').click()
+        cy.confirmDel();
     });
 
 });
