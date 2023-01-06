@@ -4,7 +4,7 @@ describe('Grupos Syneco Reports', () => {
         cy.visit('/')
     })
 
-    it('Grupo Incorreto', () => {
+    it.only('Grupo Incorreto', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.openOptions();
         cy.contains('span', 'Novo grupo').click();
@@ -22,17 +22,23 @@ describe('Grupos Syneco Reports', () => {
         cy.get('button[type="submit"]').click();
         cy.confirmCreate();
         cy.openSettings();
+        cy.get('#mat-tab-label-1-2 > .mat-tab-label-content > span.ng-star-inserted').click()
+            .wait(1000);
         cy.contains(Cypress.env('title'))
     });
 
     it.only('Excluindo um grupo', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.openSettings();
+        cy.get('#mat-tab-label-1-2 > .mat-tab-label-content > span.ng-star-inserted').click()
+            .wait(1000);
         cy.get('img[class*="ic-search"]').click();
-        cy.contains(Cypress.env('title'));
+        cy.contains(Cypress.env('title'))
+            .wait(500);
+        cy.search();
         cy.confirmDel();
-        cy.get('input[data-placeholder="Procurar"]').clear().type(Cypress.env('title'));
-        cy.get('img[class*="ic-search"]').click();
+        cy.get('input[data-placeholder="Procurar"]').clear();
+        cy.search();
         cy.contains(Cypress.env('title')).should('not.exist');
     });
 
@@ -45,7 +51,7 @@ describe('Grupos Syneco Reports', () => {
         cy.get('div[class="mat-slide-toggle-thumb"]').click()
         cy.get('button[type="submit"]').click()
     })
-    it('Editando um relatório', () => {
+    it('Editando um Grupo', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.gerenGroupEdit(Cypress.env('title'));
         cy.get('input[data-placeholder="Título de exibição"]').clear()

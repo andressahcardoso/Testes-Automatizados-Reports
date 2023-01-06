@@ -32,7 +32,10 @@ Cypress.Commands.add('openOptions', () => {
 Cypress.Commands.add('openSettings', () => {
     cy.get('.mat-toolbar-row > :nth-child(6)').click(); //Utilizado o Selector Playground do Cypress
     cy.contains('span', ' Gerenciadores ').click();
-    cy.get('#mat-input-3').type(Cypress.env('title'));
+})
+
+Cypress.Commands.add('search', () => {
+    cy.get('input[data-placeholder="Procurar"]').type(Cypress.env('title'));
     cy.get('img[class*="ic-search"]').click();
 })
 
