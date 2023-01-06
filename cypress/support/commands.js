@@ -1,14 +1,11 @@
 
 // ----- RELATÓRIO -----
 
-Cypress.Commands.add('createRel', () => {
-    cy.get('#mat-input-2').type('Cypress_01'); //Utilizado o Selector Playground​ do Cypress
-    cy.get('#mat-input-3').type('Cypress - 01'); //Utilizado o Selector Playground​ do Cypress
-    cy.get('input[data-placeholder="Grupo"]').type('Cypress - Testes Automatizados');
-    cy.get('span[class="mat-option-text"]').contains('Cypress - Testes Automatizados').click();
-    cy.contains('span', 'Próximo').click({force: true});
-    cy.contains('span', 'Próximo').click({force: true});
-    cy.contains('span', ' Finalizar e salvar ').click({force: true});
+Cypress.Commands.add('createRel', (rel_id, rel_name, rel_group) => {
+    cy.get('#mat-input-2').type(rel_id); //Utilizado o Selector Playground​ do Cypress
+    cy.get('#mat-input-3').type(rel_name); //Utilizado o Selector Playground​ do Cypress
+    cy.get('input[data-placeholder="Grupo"]').type(rel_group);
+    cy.get('span[class="mat-option-text"]').contains(rel_group).click();
 })
 
 Cypress.Commands.add('saveEditRel', () => {
@@ -17,6 +14,7 @@ Cypress.Commands.add('saveEditRel', () => {
     cy.contains('h1', 'Salvar').should('be.visible');
     cy.contains('span', 'Ok').click({force: true});
 })
+
 
 // ----- GRUPO -----
 
@@ -52,9 +50,20 @@ Cypress.Commands.add('gerenGroup', (grupo) => {
 // })
 
 
-// ----- GRÁFICOS -----
-
 // ----- RELATÓRIO EXTERNO -----
+
+Cypress.Commands.add('createExtRel', (extern_id, extern_name, extern_group) => {
+    cy.get('input[id="reportForm-name"]').type(extern_id);
+    cy.get('input[id="reportForm-caption"]').type(extern_name);
+    cy.get('mat-select[id="reportForm-groupId"]').type(extern_group);
+    cy.get('span[class="mat-option-text"]').contains(extern_group).click();
+})
+
+Cypress.Commands.add('saveEditExRel', () => {
+    cy.contains('h1', 'Salvar').should('be.visible');
+    cy.get('button').contains('span', 'Ok').click();
+})
+// ----- GRÁFICOS -----
 
 // ----- SINÓTICO -----
 

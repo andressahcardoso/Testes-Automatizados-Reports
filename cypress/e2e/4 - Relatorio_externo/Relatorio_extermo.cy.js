@@ -5,12 +5,9 @@ describe('Testes em relatorio externo', () => {
     });
     it('Criando relatorio externo', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
-        cy.get('img[src="assets/icons/ic_add_circle.svg"]').click();
+        cy.openOptions()
         cy.contains('span', 'Novo relatório externo').click();
-        cy.get('input[id="reportForm-name"]').type('Cypress_02');
-        cy.get('input[id="reportForm-caption"]').type('Cypress - 02');
-        cy.get('mat-select[id="reportForm-groupId"]').type('Cypress - Testes Automatizados');
-        cy.get('span[class="mat-option-text"]').contains('Cypress - Testes Automatizados').click();
+        cy.createExtRel('Cypress_02', 'Cypress - 02', 'Cypress - Testes Automatizados')
         cy.get('input[id="reportForm-externalLink"]').type('https://ska.com.br/');
         cy.get('button').contains('span', 'Próximo').click();
         cy.get('button').contains('span', 'Finalizar e salvar').click();
@@ -26,8 +23,7 @@ describe('Testes em relatorio externo', () => {
         cy.get('input[id="reportForm-externalLink"]').clear().type('https://www.alura.com.br/');
         cy.get('button').contains('span', 'Próximo').click();
         cy.get('button').contains('span', 'Finalizar e salvar').click();
-        cy.contains('h1', 'Salvar').should('be.visible');
-        cy.get('button').contains('span', 'Ok').click();
+        cy.saveEdExRel()
     });
 
     it('Excluindo relatorio externo', () => {
