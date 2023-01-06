@@ -11,6 +11,12 @@ Cypress.Commands.add('createRel', () => {
     cy.contains('span', ' Finalizar e salvar ').click({force: true});
 })
 
+Cypress.Commands.add('saveEditRel', () => {
+    cy.contains('h1', 'Salvar edição').should('be.visible');
+    cy.contains('span', 'Sim').click({force: true});
+    cy.contains('h1', 'Salvar').should('be.visible');
+    cy.contains('span', 'Ok').click({force: true});
+})
 
 // ----- GRUPO -----
 
@@ -44,3 +50,26 @@ Cypress.Commands.add('gerenGroup', (grupo) => {
 //     cy.get('img[class*="ic-search"]').click();
 //     cy.contains('span', 'edit').click();
 // })
+
+
+// ----- GRÁFICOS -----
+
+// ----- RELATÓRIO EXTERNO -----
+
+// ----- SINÓTICO -----
+
+// ----- DASHBOARD -----
+
+// ----- CARD -----
+
+// ----- FONTE DE DADOS -----
+
+// ----- STRING DE CONEXÃO -----
+
+// ----- FUNÇÃO -----
+
+// ----- FAVORITO -----
+
+// ----- USUÁRIO -----
+
+// ----- GRUPO DE USUÁRIOS -----

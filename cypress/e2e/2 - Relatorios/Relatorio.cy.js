@@ -7,7 +7,7 @@ describe('Testes em relatórios', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.openOptions()
         cy.contains('span', 'Novo relatório').click();
-        cy.selectDataset('Aálise de Produção')
+        cy.selectDataset('Análise de Produção')
         cy.createRel()
         cy.confirmCreate();
     });
@@ -25,10 +25,7 @@ describe('Testes em relatórios', () => {
         cy.get('input[id="mat-slide-toggle-4-input"]').uncheck({force: true});
         cy.contains('span', 'Próximo').click({force: true});
         cy.contains('span', ' Finalizar e salvar ').click({force: true});
-        cy.contains('h1', 'Salvar edição').should('be.visible');
-        cy.contains('span', 'Sim').click({force: true});
-        cy.contains('h1', 'Salvar').should('be.visible');
-        cy.contains('span', 'Ok').click({force: true});
+        cy.saveEditRel()
     });
     
     it('Excluindo um relatorio', () => {
