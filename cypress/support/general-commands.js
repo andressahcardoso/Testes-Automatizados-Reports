@@ -17,6 +17,11 @@ Cypress.Commands.add('confirmCreate', () => {
     cy.contains('span', 'Ok').click({force: true});
 })
 
+Cypress.Commands.add('openOptions', () => {
+    cy.get('img[src="assets/images/logo_small.svg"]').should('be.visible');
+    cy.get('img[src="assets/icons/ic_add_circle.svg"]').click();
+})
+
 Cypress.Commands.add('selectDataset', (dataset) => {
     cy.get('input[id="mat-input-9"]').type(dataset);
     cy.get('div[class="mat-body-strong"]').contains('0').click();

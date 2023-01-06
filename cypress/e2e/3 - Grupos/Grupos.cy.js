@@ -19,6 +19,7 @@ describe('Grupos Syneco Reports', () => {
         cy.openNewGroup();
         cy.get('input[data-placeholder="Título de exibição"]').type('Cypress - Testes Automatizados');
         cy.saveViewGroup();
+        cy.contains('span', 'Novo grupo').click();
     })
 
     it('Excluindo um grupo', () => {
