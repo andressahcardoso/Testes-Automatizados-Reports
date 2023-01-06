@@ -1,8 +1,18 @@
-Cypress.Commands.add('geren', (relatorio) => {
-    cy.get('.mat-toolbar-row > :nth-child(6)').click(); //Utilizado o Selector Playground do Cypress
-    cy.contains('span', ' Gerenciadores ').click();
-    cy.get('input[data-placeholder="Procurar"]').type(relatorio);
-    cy.get('img[class*="ic-search"]').click();
+
+// ----- RELATÓRIO -----
+
+Cypress.Commands.add('createRel', (rel_id, rel_name, rel_group) => {
+    cy.get('#mat-input-2').type(rel_id); //Utilizado o Selector Playground​ do Cypress
+    cy.get('#mat-input-3').type(rel_name); //Utilizado o Selector Playground​ do Cypress
+    cy.get('input[data-placeholder="Grupo"]').type(rel_group);
+    cy.get('span[class="mat-option-text"]').contains(rel_group).click();
+})
+
+Cypress.Commands.add('saveEditRel', () => {
+    cy.contains('h1', 'Salvar edição').should('be.visible');
+    cy.contains('span', 'Sim').click({force: true});
+    cy.contains('h1', 'Salvar').should('be.visible');
+    cy.contains('span', 'Ok').click({force: true});
 })
 
 
@@ -28,6 +38,7 @@ Cypress.Commands.add('gerenGroup', (grupo) => {
     cy.get('img[class*="ic-search"]').click();
     
 })
+
 
 // Cypress.Commands.add('gerenGroupEdit', (grupo) => {
 //     cy.get('.mat-toolbar-row > :nth-child(6)').click(); //Utilizado o Selector Playground do Cypress

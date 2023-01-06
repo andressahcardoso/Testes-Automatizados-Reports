@@ -5,7 +5,7 @@ Cypress.Commands.add('login', (nome,senha) => {
 })
 
 Cypress.Commands.add('confirmDel', () => {
-    cy.get('.example-section > :nth-child(2)').click();
+    cy.get('img[class*="ic-delete"]').click();
     cy.contains('h1', 'Confirmar exclusão').should('be.visible');
     cy.contains('span', 'Sim').click();
     cy.contains('h1', 'Excluir').should('be.visible');

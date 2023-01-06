@@ -7,32 +7,32 @@ describe('Testes em relatorio externo', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.openOptions()
         cy.contains('span', 'Novo relatório externo').click();
-        cy.createExtRel('Cypress_02', 'Cypress - 02', 'Cypress - Testes Automatizados')
+        cy.createExtRel(Cypress.env('rel_title_id'), Cypress.env('rel_title'), Cypress.env('title'))
         cy.get('input[id="reportForm-externalLink"]').type('https://ska.com.br/');
         cy.get('button').contains('span', 'Próximo').click();
         cy.get('button').contains('span', 'Finalizar e salvar').click();
         cy.confirmCreate();
-        cy.existsRel('Cypress - 02');
+        cy.existsRel(Cypress.env('rel_title'));
     });
 
     it('Editando relatorio externo', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
-        cy.geren('Cypress - 02');
+        cy.geren(Cypress.env('rel_title'));
         cy.get('img[class*="ic-edit-pen"]').click();
-        cy.get('input[id="reportForm-name"]').clear().clear().type('Cypress_02_teste');
-        cy.get('input[id="reportForm-caption"]').clear().type('Teste 2 - Cypress');
+        cy.get('input[id="reportForm-name"]').clear().clear().type(Cypress.env('rel_title_edit_id'));
+        cy.get('input[id="reportForm-caption"]').clear().type(Cypress.env('rel_title_edit'));
         cy.get('input[id="reportForm-externalLink"]').clear().type('https://www.alura.com.br/');
         cy.get('button').contains('span', 'Próximo').click();
         cy.get('button').contains('span', 'Finalizar e salvar').click();
         cy.saveEdExRel()
-        cy.existsRel('Teste 2 - Cypress');
+        cy.existsRel(Cypress.env('rel_title_edit'));
     });
 
     it('Excluindo relatorio externo', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
-        cy.geren('Teste 2 - Cypress');
+        cy.geren(Cypress.env('rel_title_edit'));
         cy.confirmDel();
         cy.wait(500);
-        cy.NOTexistsRel('Teste 2 - Cypress')
+        cy.NOTexistsRel(Cypress.env('rel_title_edit_id'))
     });
 });

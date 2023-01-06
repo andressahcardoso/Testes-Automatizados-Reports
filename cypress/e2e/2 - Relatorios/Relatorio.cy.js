@@ -8,38 +8,39 @@ describe('Testes em relatórios', () => {
         cy.openOptions()
         cy.contains('span', 'Novo relatório').click();
         cy.selectDataset('Análise de Produção');
-        cy.createRel('Cypress_01', 'Cypress - 01', 'Cypress - Testes Automatizados');
+        cy.createRel(Cypress.env('rel_title_id'), Cypress.env('rel_title'), Cypress.env('title'));
         cy.contains('span', 'Próximo').click({force: true});
         cy.contains('span', 'Próximo').click({force: true});
         cy.contains('span', ' Finalizar e salvar ').click({force: true});
         cy.confirmCreate();
-        cy.existsRel('Cypress - 01');
+        cy.existsRel(Cypress.env('rel_title'));
     });
 
     it('Editando um relatorio', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
-        cy.geren('Cypress - 01');
+        cy.geren(Cypress.env('rel_title'));
         cy.get('img[class*="ic-edit-pen"]').click();
         cy.wait(500);
         cy.contains('span', 'Próximo').click({force: true});
-        cy.get('#mat-input-3').clear().type('Cypress_01_teste'); //Utilizado o Selector Playground​ do Cypress
-        cy.get('#mat-input-4').clear({force: true}).type('Teste 1 - Cypress'); //Utilizado o Selector Playground​ do Cypress
-        cy.get('input[data-placeholder="Grupo"]').clear().type('Cypress - Testes Automatizados');
-        cy.get('span[class="mat-option-text"]').contains('Cypress - Testes Automatizados').click();
+        cy.get('#mat-input-3').clear().type(Cypress.env('rel_title_edit_id')); //Utilizado o Selector Playground​ do Cypress
+        cy.get('#mat-input-4').clear({force: true}).type(Cypress.env('rel_title_edit')); //Utilizado o Selector Playground​ do Cypress
+        cy.get('input[data-placeholder="Grupo"]').clear().type(Cypress.env('title'));
+        cy.get('span[class="mat-option-text"]').contains(Cypress.env('title')).click();
         cy.contains('span', 'Próximo').click({force: true});
         cy.get('input[id="mat-slide-toggle-4-input"]').uncheck({force: true});
         cy.contains('span', 'Próximo').click({force: true});
         cy.contains('span', ' Finalizar e salvar ').click({force: true});
         cy.saveEditRel();
-        cy.existsRel('Teste 1 - Cypress');
+        cy.existsRel(Cypress.env('rel_title_edit'));
     });
     
     it('Excluindo um relatorio', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
-        cy.geren('Teste 1 - Cypress');
+        cy.geren(Cypress.env('rel_title_edit'));
+        cy.wait(500)
         cy.confirmDel();
         cy.wait(500);
-        cy.NOTexistsRel('Teste 1 - Cypress')
+        cy.NOTexistsRel(Cypress.env('rel_title_edit'))
     });
 
 });
