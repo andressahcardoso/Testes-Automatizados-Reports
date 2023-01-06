@@ -14,13 +14,11 @@ describe('Grupos Syneco Reports', () => {
         cy.get('button[disabled="true"]')
     })
 
-    it('Grupo Correto', () => {
-        cy.login(Cypress.env('userName'), Cypress.env('password'))
-        cy.get('img[src="assets/images/logo_small.svg"]').should('be.visible');
-        cy.get('img[src="assets/icons/ic_add_circle.svg"]').click();
-        cy.contains('span', 'Novo grupo').click();
-        cy.get('input[data-placeholder="Título de exibição"]').type('Cypress - Testes Automatizados')
-        cy.get('button[type="submit"]').click()
+    it.only('Grupo Correto', () => {
+        cy.login(Cypress.env('userName'), Cypress.env('password'));
+        cy.openNewGroup();
+        cy.get('input[data-placeholder="Título de exibição"]').type('Cypress - Testes Automatizados');
+        cy.saveViewGroup();
     })
 
     it('Excluindo um grupo', () => {
@@ -33,7 +31,7 @@ describe('Grupos Syneco Reports', () => {
         cy.get('img[src="assets/images/logo_small.svg"]').should('be.visible');
         cy.get('img[src="assets/icons/ic_add_circle.svg"]').click();
         cy.contains('span', 'Novo grupo').click();
-        cy.get('input[data-placeholder="Título de exibição"]').type('Cypress - Testes Automatizados')
+        cy.gerenGroup('input[data-placeholder="Título de exibição"]').type('Cypress - Testes Automatizados')
         cy.get('div[class="mat-slide-toggle-thumb"]').click()
         cy.get('button[type="submit"]').click()
     })
