@@ -82,3 +82,9 @@ Cypress.Commands.add('saveEdExRel', () => {
 // ----- USUÁRIO -----
 
 // ----- GRUPO DE USUÁRIOS -----
+
+Cypress.Commands.add('createUserG', (gUser, gdescript, gemail) => {
+    cy.get('input[data-placeholder="Nome"]').type(gUser);
+    cy.get('input[data-placeholder="Descrição"]').type(gdescript);
+    cy.get('input[data-placeholder="Email"]').type(gemail);
+})
