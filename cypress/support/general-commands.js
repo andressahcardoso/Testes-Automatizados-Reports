@@ -27,3 +27,10 @@ Cypress.Commands.add('openOptions', () => {
     cy.get('img[src="assets/images/logo_small.svg"]').should('be.visible');
     cy.get('img[src="assets/icons/ic_add_circle.svg"]').click();
 })
+
+Cypress.Commands.add('geren', (search) => {
+    cy.get('.mat-toolbar-row > :nth-child(6)').click(); //Utilizado o Selector Playground do Cypress
+    cy.contains('span', ' Gerenciadores ').click();
+    cy.get('input[data-placeholder="Procurar"]').type(search);
+    cy.get('img[class*="ic-search"]').click();
+})
