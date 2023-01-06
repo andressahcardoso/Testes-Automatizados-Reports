@@ -5,7 +5,7 @@ Cypress.Commands.add('login', (nome,senha) => {
 })
 
 Cypress.Commands.add('confirmDel', () => {
-    cy.get('img[class*="ic-delete"]').click();
+    cy.get('.example-section > :nth-child(2)').click();
     cy.contains('h1', 'Confirmar exclusão').should('be.visible');
     cy.contains('span', 'Sim').click();
     cy.contains('h1', 'Excluir').should('be.visible');
@@ -20,4 +20,11 @@ Cypress.Commands.add('confirmCreate', () => {
 Cypress.Commands.add('openOptions', () => {
     cy.get('img[src="assets/images/logo_small.svg"]').should('be.visible');
     cy.get('img[src="assets/icons/ic_add_circle.svg"]').click();
+})
+
+Cypress.Commands.add('openSettings', () => {
+    cy.get('.mat-toolbar-row > :nth-child(6)').click(); //Utilizado o Selector Playground do Cypress
+    cy.contains('span', ' Gerenciadores ').click();
+    cy.get('#mat-input-3').type(Cypress.env('title'));
+    cy.get('img[class*="ic-search"]').click();
 })
