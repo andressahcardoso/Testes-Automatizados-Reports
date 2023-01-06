@@ -59,7 +59,7 @@ Cypress.Commands.add('createExtRel', (extern_id, extern_name, extern_group) => {
     cy.get('span[class="mat-option-text"]').contains(extern_group).click();
 })
 
-Cypress.Commands.add('saveEditExRel', () => {
+Cypress.Commands.add('saveEdExRel', () => {
     cy.contains('h1', 'Salvar').should('be.visible');
     cy.get('button').contains('span', 'Ok').click();
 })

@@ -12,6 +12,7 @@ describe('Testes em relatorio externo', () => {
         cy.get('button').contains('span', 'Próximo').click();
         cy.get('button').contains('span', 'Finalizar e salvar').click();
         cy.confirmCreate();
+        cy.existsRel('Cypress - 02');
     });
 
     it('Editando relatorio externo', () => {
@@ -24,11 +25,14 @@ describe('Testes em relatorio externo', () => {
         cy.get('button').contains('span', 'Próximo').click();
         cy.get('button').contains('span', 'Finalizar e salvar').click();
         cy.saveEdExRel()
+        cy.existsRel('Teste 2 - Cypress');
     });
 
     it('Excluindo relatorio externo', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.geren('Teste 2 - Cypress');
         cy.confirmDel();
+        cy.wait(500);
+        cy.NOTexistsRel('Teste 2 - Cypress')
     });
 });

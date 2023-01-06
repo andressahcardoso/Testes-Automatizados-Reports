@@ -31,6 +31,18 @@ Cypress.Commands.add('openOptions', () => {
 Cypress.Commands.add('geren', (search) => {
     cy.get('.mat-toolbar-row > :nth-child(6)').click(); //Utilizado o Selector Playground do Cypress
     cy.contains('span', ' Gerenciadores ').click();
+    cy.wait(500);
     cy.get('input[data-placeholder="Procurar"]').type(search);
     cy.get('img[class*="ic-search"]').click();
+})
+
+Cypress.Commands.add('existsRel', (relName) => {
+    cy.wait(600);
+    cy.geren(relName);
+    cy.get('mat-tree-node').contains('div', relName).should('be.visible');
+})
+
+Cypress.Commands.add('NOTexistsRel', (relNameNOT) => {
+    cy.geren(relNameNOT);
+    cy.contains('span', 'Nenhuma linha para exibir').should('be.visible');
 })

@@ -13,9 +13,10 @@ describe('Testes em relatórios', () => {
         cy.contains('span', 'Próximo').click({force: true});
         cy.contains('span', ' Finalizar e salvar ').click({force: true});
         cy.confirmCreate();
+        cy.existsRel('Cypress - 01');
     });
 
-    it.only('Editando um relatorio', () => {
+    it('Editando um relatorio', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.geren('Cypress - 01');
         cy.get('img[class*="ic-edit-pen"]').click();
@@ -29,13 +30,16 @@ describe('Testes em relatórios', () => {
         cy.get('input[id="mat-slide-toggle-4-input"]').uncheck({force: true});
         cy.contains('span', 'Próximo').click({force: true});
         cy.contains('span', ' Finalizar e salvar ').click({force: true});
-        cy.saveEditRel()
+        cy.saveEditRel();
+        cy.existsRel('Teste 1 - Cypress');
     });
     
     it('Excluindo um relatorio', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.geren('Teste 1 - Cypress');
         cy.confirmDel();
+        cy.wait(500);
+        cy.NOTexistsRel('Teste 1 - Cypress')
     });
 
 });
