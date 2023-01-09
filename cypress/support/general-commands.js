@@ -23,6 +23,12 @@ Cypress.Commands.add('selectDataset', (dataset) => {
     cy.contains('span', 'Próximo').click();
 })
 
+Cypress.Commands.add('selectDataset2', (dataset) => {
+    cy.get('input[id="undefined-list-input-filter"]').type(dataset);
+    cy.get('div[class="mat-body-strong"]').contains('1').click();
+    cy.contains('span', 'Próximo').click();
+})
+
 Cypress.Commands.add('openOptions', () => {
     cy.get('img[src="assets/images/logo_small.svg"]').should('be.visible');
     cy.get('img[src="assets/icons/ic_add_circle.svg"]').click();
@@ -32,7 +38,15 @@ Cypress.Commands.add('openOptions', () => {
 Cypress.Commands.add('openSettings', () => {
     cy.get('.mat-toolbar-row > :nth-child(6)').click(); //Utilizado o Selector Playground do Cypress
     cy.contains('span', ' Gerenciadores ').click();
-    cy.get('#mat-input-3').type(Cypress.env('title'));
+})
+
+Cypress.Commands.add('search', () => {
+    cy.get('input[data-placeholder="Procurar"]').type(Cypress.env('title'));
+    cy.get('img[class*="ic-search"]').click();
+})
+
+Cypress.Commands.add('search2', () => {
+    cy.get('input[data-placeholder="Procurar"]').type(Cypress.env('editionTitle'));
     cy.get('img[class*="ic-search"]').click();
 })
 
