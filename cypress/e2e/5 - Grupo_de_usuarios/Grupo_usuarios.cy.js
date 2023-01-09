@@ -3,6 +3,8 @@ describe('Testes em grupos de usuario', () => {
     beforeEach(() => {
         cy.visit('/')
     });
+
+// TÁ COM PROBLEMA
     it.only('Criando um grupo de usuarios', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.openOptions()
