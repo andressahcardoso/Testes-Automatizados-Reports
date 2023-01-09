@@ -15,6 +15,18 @@ Cypress.Commands.add('saveEditRel', () => {
     cy.contains('span', 'Ok').click({force: true});
 })
 
+Cypress.Commands.add('existsRel', (relName) => {
+    cy.wait(600);
+    cy.geren(relName);
+    cy.get('mat-tree-node').contains('div', relName).should('be.visible');
+})
+
+Cypress.Commands.add('NOTexistsRel', (relNameNOT) => {
+    cy.geren(relNameNOT);
+    cy.contains('span', 'Nenhuma linha para exibir').should('be.visible');
+})
+
+
 
 // ----- GRUPO -----
 
@@ -82,3 +94,37 @@ Cypress.Commands.add('saveEdExRel', () => {
 // ----- USUÁRIO -----
 
 // ----- GRUPO DE USUÁRIOS -----
+
+Cypress.Commands.add('createUserG', (gUser, gdescript, gemail) => {
+    cy.get('input[data-placeholder="Nome"]').type(gUser);
+    cy.get('input[data-placeholder="Descrição"]').type(gdescript);
+    cy.get('input[data-placeholder="Email"]').type(gemail);
+})
+
+Cypress.Commands.add('GUsGeren', (GUsearch) => {
+    cy.get('.mat-toolbar-row > :nth-child(6)').click(); //Utilizado o Selector Playground do Cypress
+    cy.contains('span', ' Gerenciadores ').click();
+    cy.wait(500);
+    cy.get('div[id="mat-tab-label-2-4"]').click()
+    cy.get('#mat-input-9').type(GUsearch); //Utilizado o Selector Playground do Cypress
+    cy.get('img[class*="ic-search"]').click();
+})
+Cypress.Commands.add('GUsGerenEdit', (GUsearch) => {
+    cy.get('.mat-toolbar-row > :nth-child(6)').click(); //Utilizado o Selector Playground do Cypress
+    cy.contains('span', ' Gerenciadores ').click();
+    cy.wait(500);
+    cy.get('div[class^="mat-ripple"]').contains('span', 'Grupo de usuários').click()
+    cy.get('input[data-placeholder="Procurar"]').type(GUsearch);
+    cy.get('img[class*="ic-search"]').click();
+})
+
+Cypress.Commands.add('existsGUs', (gName) => {
+    cy.wait(600);
+    cy.GUsGeren(gName);
+    cy.contains('div', gName).should('be.visible');
+})
+Cypress.Commands.add('existsGUsEdit', (gName) => {
+    cy.wait(600);
+    cy.GUsGerenEdit(gName);
+    cy.contains('div', gName).should('be.visible');
+})
