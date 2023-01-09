@@ -23,6 +23,12 @@ Cypress.Commands.add('selectDataset', (dataset) => {
     cy.contains('span', 'Próximo').click();
 })
 
+Cypress.Commands.add('selectDataset2', (dataset) => {
+    cy.get('input[id="undefined-list-input-filter"]').type(dataset);
+    cy.get('div[class="mat-body-strong"]').contains('1').click();
+    cy.contains('span', 'Próximo').click();
+})
+
 Cypress.Commands.add('openOptions', () => {
     cy.get('img[src="assets/images/logo_small.svg"]').should('be.visible');
     cy.get('img[src="assets/icons/ic_add_circle.svg"]').click();

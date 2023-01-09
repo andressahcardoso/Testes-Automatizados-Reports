@@ -11,7 +11,7 @@ describe('Grupos Syneco Reports', () => {
         cy.get('input[data-placeholder="Título de exibição"]').type(Cypress.env('title')).clear();
         cy.contains('input', Cypress.env('title')).should('not.exist');
         cy.get('button[type="submit"]').click({force: true});
-        cy.contains('span', 'Ok').should('not.exist');
+        cy.get('span', 'Ok').should('not.exist');
     })
 
     it('Grupo Correto', () => {
