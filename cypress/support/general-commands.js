@@ -39,6 +39,11 @@ Cypress.Commands.add('search', () => {
     cy.get('img[class*="ic-search"]').click();
 })
 
+Cypress.Commands.add('search2', () => {
+    cy.get('input[data-placeholder="Procurar"]').type(Cypress.env('editionTitle'));
+    cy.get('img[class*="ic-search"]').click();
+})
+
 Cypress.Commands.add('geren', (search) => {
     cy.get('.mat-toolbar-row > :nth-child(6)').click(); //Utilizado o Selector Playground do Cypress
     cy.contains('span', ' Gerenciadores ').click();
