@@ -5,7 +5,7 @@ describe('Testes em grupos de usuario', () => {
     });
 
 // TÁ COM PROBLEMA
-    it.only('Criando um grupo de usuarios', () => {
+    it('Criando um grupo de usuarios', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.openOptions()
         cy.contains('span', 'Novo grupo de usuários').click(); 
@@ -16,13 +16,32 @@ describe('Testes em grupos de usuario', () => {
         cy.get('button').contains('span', 'Próximo').click({force: true});
         cy.get('div[id="mat-tab-label-1-2"]').click(); 
         cy.get('button').contains('span', 'Finalizar e salvar').click();
+        cy.wait(500)
         cy.confirmCreate();
         cy.existsGUs(Cypress.env('rel_title_id'))
     });
 
-    it.only('Editando grupo de usuarios', () => {
+    it('Editando grupo de usuarios', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
-        cy.GUsGerenEdit(Cypress.env('rel_title'));
+        cy.GUsGeren2(Cypress.env('rel_title'));
+        cy.contains('span', 'edit').click();
+        cy.wait(500);
+        cy.get('div[class="mat-slide-toggle-bar"]').click();
+        cy.get('input[data-placeholder="Nome"]').clear().type(Cypress.env('rel_title_edit'));
+        cy.get('input[data-placeholder="Descrição"]').clear().type(Cypress.env('rel_title_edit_id'));
+        cy.get('input[data-placeholder="Email"]').clear().type(Cypress.env('email_edit'));
+        cy.get('button').contains('span', 'Próximo').click();
+        cy.get('button').contains('span', 'Próximo').click({force: true});
+        cy.get('button').contains('span', 'Próximo').click({force: true});
+        cy.get('button').contains('span', 'Finalizar e salvar').click();
+        cy.saveEdExRel();
+        cy.existsGUsEdit(Cypress.env('rel_title_edit_id'))
+    });
+
+    it.only('Excluindo grupo de usuarios', () => {
+        cy.login(Cypress.env('userName'), Cypress.env('password'));
+        cy.GUsGeren2(Cypress.env('rel_title_edit_id'));
+        cy.confirmDel2()
     });
 });
 
