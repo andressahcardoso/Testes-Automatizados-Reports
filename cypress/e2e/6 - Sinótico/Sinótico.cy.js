@@ -19,10 +19,20 @@ describe('Sinótico Syneco Reports', () => {
         cy.contains('span', 'Status').click();
         cy.contains('div', ' ResourceCode' ).click();
         cy.contains('span', 'Próximo').click({force: true});
-
-        // cy.get('mat-select[id="legend-form-columnId"]').click().click();
-        // cy.contains('div', ' ResourceID ').click();
-        // cy.get('input[id="legend-form-caption"]').type('Verde');
+        cy.contains('span', 'Próximo').click({force: true});       
+        cy.get('input[type="file"]')
+            .attachFile('img-fabrica.jpg', { subjectType: 'input' });
+        cy.contains('span', 'Escolha uma cor').click();
+        cy.get('.mat-menu-content > [style="background: rgb(77, 182, 172);"]').click({force: true});
+        cy.contains('span', 'Próximo').click({force: true});    
+        
+        cy.contains('div', ' BANCADA 01 ').click();
+        cy.get('img[id="imageConfig2__-1_0"]').click();
+        cy.contains('div', ' BANCADA 02 ').click();
+        cy.get('img[id="imageConfig2__-1_0"]').click();
+        cy.contains('span', 'Próximo').click({force: true});      
+        cy.contains('span', 'Finalizar e salvar').click()
+        cy.confirmCreate();
     })
 
 });
