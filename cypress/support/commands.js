@@ -106,16 +106,12 @@ Cypress.Commands.add('GUsGeren', (GUsearch) => {
     cy.contains('span', ' Gerenciadores ').click();
     cy.wait(500);
     cy.get('div[id="mat-tab-label-2-4"]').click()
-    cy.get('#mat-input-9').type(GUsearch); //Utilizado o Selector Playground do Cypress
-    cy.get('img[class*="ic-search"]').click();
 })
-Cypress.Commands.add('GUsGerenEdit', (GUsearch) => {
+Cypress.Commands.add('GUsGeren2', (GUsearch) => {
     cy.get('.mat-toolbar-row > :nth-child(6)').click(); //Utilizado o Selector Playground do Cypress
     cy.contains('span', ' Gerenciadores ').click();
     cy.wait(500);
     cy.get('div[class^="mat-ripple"]').contains('span', 'Grupo de usuários').click()
-    cy.get('input[data-placeholder="Procurar"]').type(GUsearch);
-    cy.get('img[class*="ic-search"]').click();
 })
 
 Cypress.Commands.add('existsGUs', (gName) => {
