@@ -1,11 +1,11 @@
 describe('Grupos Syneco Reports', () => {
 
     beforeEach(() => {
-        cy.visit('/')
+        cy.visit('/');
+        cy.login(Cypress.env('userName'), Cypress.env('password'));
     })
 
     it('Grupo Incorreto', () => {
-        cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.openOptions();
         cy.contains('span', 'Novo grupo').click();
         cy.get('input[data-placeholder="Título de exibição"]').type(Cypress.env('title')).clear();
@@ -15,7 +15,6 @@ describe('Grupos Syneco Reports', () => {
     })
 
     it.only('Grupo Correto', () => {
-        cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.openOptions();
         cy.contains('span', 'Novo grupo').click();
         cy.get('input[data-placeholder="Título de exibição"]').type(Cypress.env('title'));
@@ -26,7 +25,6 @@ describe('Grupos Syneco Reports', () => {
     });
 
     it.only('Excluindo um grupo', () => {
-        cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.openSettings();
         cy.get('img[class*="ic-search"]').click();
         cy.contains(Cypress.env('title'));
@@ -37,7 +35,6 @@ describe('Grupos Syneco Reports', () => {
     });
 
     it('Grupo correto com sistema', () => {
-        cy.login(Cypress.env('userName'), Cypress.env('password'))
         cy.get('img[src="assets/images/logo_small.svg"]').should('be.visible');
         cy.get('img[src="assets/icons/ic_add_circle.svg"]').click();
         cy.contains('span', 'Novo grupo').click();
@@ -46,7 +43,6 @@ describe('Grupos Syneco Reports', () => {
         cy.get('button[type="submit"]').click()
     })
     it('Editando um relatório', () => {
-        cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.gerenGroupEdit(Cypress.env('title'));
         cy.get('input[data-placeholder="Título de exibição"]').clear()
         cy.get('input[data-placeholder="Título de exibição"]').type(Cypress.env('editionTitle'))
@@ -57,7 +53,6 @@ describe('Grupos Syneco Reports', () => {
         cy.get('button[type="submit"]').click()
     });
     it('Excluindo após edição', () => {
-        cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.gerenGroup(Cypress.env('editionTitle'));
     });
 })

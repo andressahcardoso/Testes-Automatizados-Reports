@@ -1,12 +1,12 @@
 describe('Testes em grupos de usuario', () => {
     
     beforeEach(() => {
-        cy.visit('/')
+        cy.visit('/');
+        cy.login(Cypress.env('userName'), Cypress.env('password'));
     });
 
 // TÁ COM PROBLEMA
     it('Criando um grupo de usuarios', () => {
-        cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.openOptions()
         cy.contains('span', 'Novo grupo de usuários').click(); 
         cy.createUserG(Cypress.env('rel_title'), Cypress.env('rel_title_id'), Cypress.env('email'));
@@ -22,7 +22,6 @@ describe('Testes em grupos de usuario', () => {
     });
 
     it('Editando grupo de usuarios', () => {
-        cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.GUsGeren2(Cypress.env('rel_title'));
         cy.contains('span', 'edit').click();
         cy.wait(500);
@@ -39,7 +38,6 @@ describe('Testes em grupos de usuario', () => {
     });
 
     it.only('Excluindo grupo de usuarios', () => {
-        cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.GUsGeren2(Cypress.env('rel_title_edit_id'));
         cy.confirmDel2()
     });

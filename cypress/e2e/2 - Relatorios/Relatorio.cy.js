@@ -1,10 +1,10 @@
 describe('Testes em relatórios', () => {
    
     beforeEach(() => {
-        cy.visit('/')
+        cy.visit('/');
+        cy.login(Cypress.env('userName'), Cypress.env('password'));
     });
     it.only('Criando um relatorio', () => {
-        cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.openOptions()
         cy.contains('span', 'Novo relatório').click();
         cy.selectDataset('Análise de Produção');
@@ -17,7 +17,6 @@ describe('Testes em relatórios', () => {
     });
 
     it('Editando um relatorio', () => {
-        cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.geren(Cypress.env('rel_title'));
         cy.get('img[class*="ic-edit-pen"]').click();
         cy.wait(500);
@@ -35,7 +34,6 @@ describe('Testes em relatórios', () => {
     });
     
     it('Excluindo um relatorio', () => {
-        cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.geren(Cypress.env('rel_title_edit'));
         cy.wait(500)
         cy.confirmDel();

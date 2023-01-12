@@ -2,9 +2,9 @@ describe('Testes em relatorio externo', () => {
 
     beforeEach(() => {
         cy.visit('/')
+        cy.login(Cypress.env('userName'), Cypress.env('password'));
     });
     it('Criando relatorio externo', () => {
-        cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.openOptions()
         cy.contains('span', 'Novo relatório externo').click();
         cy.createExtRel(Cypress.env('rel_title_id'), Cypress.env('rel_title'), Cypress.env('title'))
@@ -16,7 +16,6 @@ describe('Testes em relatorio externo', () => {
     });
 
     it('Editando relatorio externo', () => {
-        cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.geren(Cypress.env('rel_title'));
         cy.get('img[class*="ic-edit-pen"]').click();
         cy.get('input[id="reportForm-name"]').clear().clear().type(Cypress.env('rel_title_edit_id'));
@@ -29,7 +28,6 @@ describe('Testes em relatorio externo', () => {
     });
 
     it('Excluindo relatorio externo', () => {
-        cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.geren(Cypress.env('rel_title_edit'));
         cy.confirmDel();
         cy.wait(500);
