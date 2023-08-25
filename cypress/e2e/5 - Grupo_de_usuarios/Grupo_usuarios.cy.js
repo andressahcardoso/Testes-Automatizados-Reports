@@ -11,7 +11,7 @@ describe('Testes em grupos de usuario', () => {
         cy.contains('span', 'Novo grupo de usuários').click(); 
         cy.createUserG(Cypress.env('rel_title'), Cypress.env('rel_title_id'), Cypress.env('email'));
         cy.get('button').contains('span', 'Próximo').click();
-        cy.get('mat-checkbox[id="mat-checkbox-8"]').click();
+        cy.get('mat-checkbox[id="mat-checkbox-8"]').click({force: true});
         cy.get('button').contains('span', 'Próximo').click({force: true});
         cy.get('button').contains('span', 'Próximo').click({force: true});
         cy.get('div[id="mat-tab-label-1-2"]').click(); 
@@ -38,7 +38,7 @@ describe('Testes em grupos de usuario', () => {
         cy.existsGUsEdit(Cypress.env('rel_title_edit_id'))
     });
 
-    it.only('Excluindo grupo de usuarios', () => {
+    it('Excluindo grupo de usuarios', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
         cy.GUsGeren2(Cypress.env('rel_title_edit_id'));
         cy.confirmDel2()
