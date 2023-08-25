@@ -5,7 +5,7 @@ Cypress.Commands.add('login', (nome,senha) => {
 })
 
 Cypress.Commands.add('confirmDel', () => {
-    cy.get('img[class*="ic-delete"]').click();
+    cy.get('img[class*="mat-focus-indicator]').click();
     cy.contains('h1', 'Confirmar exclusão').should('be.visible');
     cy.contains('span', 'Sim').click();
     cy.contains('h1', 'Excluir').should('be.visible');
@@ -13,7 +13,7 @@ Cypress.Commands.add('confirmDel', () => {
 })
 
 Cypress.Commands.add('confirmDel2', () => {
-    cy.contains('span', 'delete').click();
+    cy.get(':nth-child(2) > .mat-button-wrapper > .material-icons').click();
     cy.contains('h1', 'Confirmar exclusão').should('be.visible');
     cy.contains('span', 'Sim').click();
     cy.contains('h1', 'Excluir').should('be.visible');

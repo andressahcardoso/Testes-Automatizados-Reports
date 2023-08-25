@@ -11,7 +11,8 @@ describe('Grupos Syneco Reports', () => {
         cy.get('input[data-placeholder="Título de exibição"]').type(Cypress.env('title')).clear();
         cy.contains('input', Cypress.env('title')).should('not.exist');
         cy.get('button[type="submit"]').click({force: true});
-        cy.get('span', 'Ok').should('not.exist');
+        cy.wait(500);
+        cy.contains('h1', 'Salvar').should('not.exist');
     })
 
     it('Grupo Correto', () => {
@@ -37,7 +38,7 @@ describe('Grupos Syneco Reports', () => {
         cy.contains(Cypress.env('title'))
             .wait(500);
         cy.search();
-        cy.confirmDel();
+        cy.confirmDel2();
         cy.get('input[data-placeholder="Procurar"]').clear();
         cy.search();
         cy.contains(Cypress.env('title')).should('not.exist');
@@ -85,7 +86,7 @@ describe('Grupos Syneco Reports', () => {
         cy.contains(Cypress.env('editionTitle'))
             .wait(500);
         cy.search2();
-        cy.confirmDel();
+        cy.confirmDel2();
         cy.openSettings();
         cy.get('div[class^="mat-ripple"]').contains('span', 'Grupo').click().click()
             .wait(1000);
